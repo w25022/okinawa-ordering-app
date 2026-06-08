@@ -205,19 +205,25 @@ function closeCart() {
 }
 
 function changeLanguage(lang) {
+    const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = text;
+    };
+
     currentLang = lang;
-    document.getElementById("appTitle").innerText = translations[lang].title;
-    document.getElementById("btnAll").innerText = translations[lang].all;
-    document.getElementById("btnDishes").innerText = translations[lang].dishes;
-    document.getElementById("btnAppetizers").innerText = translations[lang].appetizers;
-    document.getElementById("btnDrinks").innerText = translations[lang].drinks;
-    document.getElementById("txtTotal").innerText = translations[lang].total;
-    document.getElementById("drawerTotalLabel").innerText = translations[lang].total;
-    document.getElementById("btnOrder").innerText = translations[lang].order;
-    document.getElementById("btnOrderDrawer").innerText = translations[lang].order;
-    document.getElementById("drawerTitle").innerText = translations[lang].cart;
+    setText("appTitle", translations[lang].title);
+    setText("btnAll", translations[lang].all);
+    setText("btnDishes", translations[lang].dishes);
+    setText("btnAppetizers", translations[lang].appetizers);
+    setText("btnDrinks", translations[lang].drinks);
+    setText("txtTotal", translations[lang].total);
+    setText("drawerTotalLabel", translations[lang].total);
+    setText("btnOrder", translations[lang].order);
+    setText("btnOrderDrawer", translations[lang].order);
+    setText("drawerTitle", translations[lang].cart);
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(`lang-${lang}`).classList.add('active');
+    const langBtn = document.getElementById(`lang-${lang}`);
+    if (langBtn) langBtn.classList.add('active');
     renderMenu();
     renderCart();
 }
