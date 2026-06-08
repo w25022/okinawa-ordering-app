@@ -236,8 +236,18 @@ function renderMenu() {
         ? menuItems 
         : menuItems.filter(item => item.category === currentCategory);
 
+    const countLabel = document.getElementById("menuCount");
+    if (countLabel) {
+        countLabel.innerText = `全 ${filteredItems.length} 品`;
+    }
+
     filteredItems.forEach(item => {
-        const itemName = item.names[currentLang]; 
+        const itemName = item.names[currentLang];
+        const categoryLabel = item.category === 'Okinawa Dishes'
+            ? translations[currentLang].dishes
+            : item.category === 'Appetizers'
+            ? translations[currentLang].appetizers
+            : translations[currentLang].drinks;
 
         menuContainer.innerHTML += `
             <div class="item-card">
@@ -245,6 +255,7 @@ function renderMenu() {
                     <img src="${item.imageUrl}" alt="${itemName}" />
                 </div>
                 <div class="item-info">
+                    <div class="item-tag">${categoryLabel}</div>
                     <div class="item-name">${itemName}</div>
                     <div class="item-price">${item.price} JPY</div>
                 </div>
