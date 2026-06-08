@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,107 +7,119 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="lang-bar">
-      <button
-        class="lang-btn active"
-        id="lang-ja"
-        onclick="changeLanguage('ja')"
-      >
-        日本語
-      </button>
-      <button class="lang-btn" id="lang-en" onclick="changeLanguage('en')">
-        English
-      </button>
-      <button
-        class="lang-btn"
-        id="lang-zh_tw"
-        onclick="changeLanguage('zh_tw')"
-      >
-        繁體
-      </button>
-      <button
-        class="lang-btn"
-        id="lang-zh_cn"
-        onclick="changeLanguage('zh_cn')"
-      >
-        简体
-      </button>
-      <button class="lang-btn" id="lang-ko" onclick="changeLanguage('ko')">
-        한국어
-      </button>
-      <button class="lang-btn" id="lang-es" onclick="changeLanguage('es')">
-        Español
-      </button>
-    </div>
-
-    <div class="header" id="appTitle">Okinawa Restaurant Menu</div>
-
-    <div class="category-bar">
-      <button
-        class="category-btn active"
-        id="btnAll"
-        onclick="filterMenu('All', this)"
-      >
-        All
-      </button>
-      <button
-        class="category-btn"
-        id="btnDishes"
-        onclick="filterMenu('Okinawa Dishes', this)"
-      >
-        Okinawa Dishes
-      </button>
-      <button
-        class="category-btn"
-        id="btnAppetizers"
-        onclick="filterMenu('Appetizers', this)"
-      >
-        Appetizers
-      </button>
-      <button
-        class="category-btn"
-        id="btnDrinks"
-        onclick="filterMenu('Drinks', this)"
-      >
-        Drinks
-      </button>
-    </div>
-
-    <div class="menu-container" id="menuDisplay"></div>
-
-    <div class="cart-bar" id="cartBar">
-      <button class="cart-toggle-btn" onclick="toggleCart()">
-        <span class="cart-icon">🛒</span>
-        <span class="cart-badge" id="cartCount">0</span>
-      </button>
-      <div class="cart-summary">
-        <div class="cart-total-label" id="txtTotal">Total</div>
-        <div class="cart-total-value"><span id="totalPrice">0</span> JPY</div>
-      </div>
-      <button class="order-btn" id="btnOrder" onclick="placeOrder()">
-        Order Now
-      </button>
-    </div>
-
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <div class="cart-drawer" id="cartDrawer">
-      <div class="cart-drawer-header">
-        <div>
-          <strong id="drawerTitle">Cart</strong> (<span id="cartCountDrawer"
-            >0</span
-          >)
+    <div class="page-shell">
+      <header class="app-header">
+        <button class="icon-btn menu-btn" aria-label="Menu">☰</button>
+        <div class="header-title" id="appTitle">Okinawa Restaurant Menu</div>
+        <div class="header-actions">
+          <button class="icon-btn" aria-label="Search">🔍</button>
+          <button class="icon-btn" aria-label="History">🧾</button>
         </div>
-        <button class="close-cart" onclick="toggleCart()">×</button>
-      </div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-drawer-footer">
-        <div class="cart-total">
-          <span id="drawerTotalLabel">Total</span>:
-          <span id="drawerTotalPrice">0</span> JPY
-        </div>
-        <button class="order-btn" id="btnOrderDrawer" onclick="placeOrder()">
-          Place Order
+      </header>
+
+      <div class="lang-bar">
+        <button
+          class="lang-btn active"
+          id="lang-ja"
+          onclick="changeLanguage('ja')"
+        >
+          日本語
         </button>
+        <button class="lang-btn" id="lang-en" onclick="changeLanguage('en')">
+          English
+        </button>
+        <button
+          class="lang-btn"
+          id="lang-zh_tw"
+          onclick="changeLanguage('zh_tw')"
+        >
+          繁體
+        </button>
+        <button
+          class="lang-btn"
+          id="lang-zh_cn"
+          onclick="changeLanguage('zh_cn')"
+        >
+          简体
+        </button>
+        <button class="lang-btn" id="lang-ko" onclick="changeLanguage('ko')">
+          한국어
+        </button>
+        <button class="lang-btn" id="lang-es" onclick="changeLanguage('es')">
+          Español
+        </button>
+      </div>
+
+      <div class="category-bar">
+        <button
+          class="category-btn active"
+          id="btnAll"
+          onclick="filterMenu('All', this)"
+        >
+          すべて
+        </button>
+        <button
+          class="category-btn"
+          id="btnDishes"
+          onclick="filterMenu('Okinawa Dishes', this)"
+        >
+          沖縄料理
+        </button>
+        <button
+          class="category-btn"
+          id="btnAppetizers"
+          onclick="filterMenu('Appetizers', this)"
+        >
+          小鉢・おつまみ
+        </button>
+        <button
+          class="category-btn"
+          id="btnDrinks"
+          onclick="filterMenu('Drinks', this)"
+        >
+          ドリンク
+        </button>
+      </div>
+
+      <main class="content">
+        <div class="section-title">おすすめメニュー</div>
+        <div class="menu-container" id="menuDisplay"></div>
+      </main>
+
+      <div class="cart-bar" id="cartBar">
+        <button class="cart-toggle-btn" onclick="toggleCart()">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <div class="cart-summary">
+          <div class="cart-total-label" id="txtTotal">合計</div>
+          <div class="cart-total-value"><span id="totalPrice">0</span> JPY</div>
+        </div>
+        <button class="order-btn" id="btnOrder" onclick="placeOrder()">
+          注文する
+        </button>
+      </div>
+
+      <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+      <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+          <div>
+            <strong id="drawerTitle">カート</strong> (<span id="cartCountDrawer"
+              >0</span
+            >)
+          </div>
+          <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-drawer-footer">
+          <div class="cart-total">
+            <span id="drawerTotalLabel">合計</span>:
+            <span id="drawerTotalPrice">0</span> JPY
+          </div>
+          <button class="order-btn" id="btnOrderDrawer" onclick="placeOrder()">
+            注文する
+          </button>
+        </div>
       </div>
     </div>
 
