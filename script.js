@@ -34,13 +34,12 @@ function updateCartBar() {
     if (document.getElementById("cartCount")) document.getElementById("cartCount").innerText = getCartCount();
 }
 
-// ၃။ အချက်အတွက် - ဘယ် Tab ကနေမဆို Home Page (Menu View) သို့ တိုက်ရိုက်ပြန်သွားစေမည့် Function
+
 function navigateToHome() {
     document.getElementById('cartScreen').style.display = 'none';
     document.getElementById('historyScreen').style.display = 'none';
     document.getElementById('mainMenuScreen').style.display = 'block';
     
-    // Cart ထဲတွင် ပစ္စည်းရှိပါက အောက်ခြေ Cart Bar ကို ပြန်ပြပါမည်
     if (cart.length >= 0) {
         document.getElementById('cartBar').style.display = 'flex';
     }
@@ -66,7 +65,7 @@ function showHistoryPage() {
     renderHistoryView();
 }
 
-// ၂။ အချက်အတွက် - မြှားခလုတ်နှိပ်ပါက Category စာရင်းကို ဘယ်/ညာ Scroll လုပ်ပေးသည့် Function
+
 function scrollCategories(direction) {
     const container = document.getElementById('categoryBarContainer');
     if (container) {
